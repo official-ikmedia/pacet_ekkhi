@@ -32,7 +32,7 @@ body {
 }
 
 .hero h1 {
-  font-family: "Dynalight", Arial, Helvetica, sans-serif;
+  font-family: "Engagement", Arial, Helvetica, sans-serif;
   font-size: 4.7rem;
 }
 
@@ -112,7 +112,7 @@ body {
 .rsvp h2,
 .turutmengundang h2 {
   color: var(--hijau);
-  font-family: 'Dynalight', Arial, Helvetica, sans-serif;
+  font-family: 'Engagement', Arial, Helvetica, sans-serif;
   font-size: 4rem;
   text-decoration: underline;
   text-underline-offset: 10px;
@@ -165,7 +165,7 @@ body {
 }
 
 .home2 .couple h3 {
-  font-family: 'Dynalight';
+  font-family: 'Engagement';
   font-size: 2.4rem;
   color: var(--hijau);
 }
@@ -465,7 +465,7 @@ footer li {
   }
 
   .hero h1 {
-    font-family: "Dynalight", Arial, Helvetica, sans-serif;
+    font-family: "Engagement", Arial, Helvetica, sans-serif;
     font-size: 3.4rem;
   }
 
