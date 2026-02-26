@@ -85,7 +85,7 @@ body {
 .mynavbar .navbar-brand,
 .mynavbar .offcanvas-title {
   font-family: 'Charmonman', Arial, Helvetica, sans-serif;
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 .mynavbar .nav-link {
@@ -114,7 +114,6 @@ body {
 .home2 h2,
 .story h2,
 .turutmengundang h2 {
-  /* color: var(--bg); */
   font-family: 'Charmonman', Arial, Helvetica, sans-serif;
   font-size: 4rem;
   text-decoration: underline;
@@ -398,13 +397,13 @@ footer li {
   }
 
   .menu2 .nav-pills {
-    background: #213522ab;
+    background: #fef8cd90;
     padding-left: 10px;
     padding-right: 10px;
   }
 
   .menu2 .nav-link {
-    color: #fff;
+    color: var(--bg);
   }
 
   .card .kisah-kami {
@@ -517,7 +516,7 @@ footer li {
 
   .tanggalnya {
     font-family: "Cookie", Arial, Helvetica, sans-serif;
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: lighter;
   }
 
@@ -526,7 +525,7 @@ footer li {
   }
 
   .harinya {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-family: "Work Sans", Arial, Helvetica, sans-serif;
     font-weight: normal;
   }
