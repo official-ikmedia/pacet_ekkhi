@@ -44,8 +44,8 @@
          <p data-aos="fade" data-aos-delay="100" data-aos-duration="1500">Akan melangsungkan pernikahan dalam:</p>
          <div class="simply-countdown mb-4" data-aos="fade" data-aos-delay="150" data-aos-duration="1500"></div>
          <h5 class="mt-4" data-aos="fade" data-aos-delay="100" data-aos-duration="1500">Kepada Yth,</h5>
-         <h5 data-aos="fade" data-aos-delay="100" data-aos-duration="1500"><span
-               class="nama-tamu">Bapak/Ibu/Saudara/i</span></h5>
+         <h5 data-aos="fade" data-aos-delay="100" data-aos-duration="1500"><span class="sapaan">Bapak</span><span
+               class="nama-tamu"></span></h5>
          <a href="#home" class="btn btn-lg mt-4 bg-gradient border-1 border-dark-subtle shadow" onClick="enableScroll()"
             data-aos="fade" data-aos-delay="200" data-aos-duration="1500"><i class="bi bi-envelope-fill"></i>
             Buka Undangan</a>
@@ -476,8 +476,8 @@
    </footer>
 
    <div id="audio-container">
-      <audio id="song" autoplay loop>
-         <!-- <source src="assets/audio/For-a-Lifetime.mp3" type="audio/mp3"> -->
+      <audio id="song" loop>
+         <source src="assets/audio/BATAS SENJA_Nanti Kita Seperti Ini.mp3" type="audio/mp3">
       </audio>
 
       <div class="audio-icon-wrapper" style="display: none;">
@@ -577,7 +577,7 @@
        * Memutar audio dan menampilkan ikon audio.
        */
       const playAudio = () => {
-         song.volume = 0.1;
+         song.volume = 0.7;
          audioIconWrapper.style.display = 'flex';
          song.play();
          isPlaying = true;
@@ -601,7 +601,42 @@
       disableScroll();
    </script>
 
+
    <script>
+      const params = new URLSearchParams(window.location.search);
+
+      // Ambil parameter
+      const nama = params.get('n');
+      const sapaanParam = params.get('s');
+
+      // Elemen
+      const elSapaan = document.querySelector('.sapaan');
+      const elNama = document.querySelector('.nama-tamu');
+
+      // Default sapaan
+      let sapaan = 'Bapak/Ibu';
+
+      // Validasi sapaan agar hanya satu & aman
+      if (sapaanParam) {
+         const allowed = ['Bapak', 'Ibu', 'Saudara', 'Saudari', 'Kanda', 'Adinda'];
+         if (allowed.includes(sapaanParam)) {
+            sapaan = sapaanParam;
+         }
+      }
+
+      // Render teks
+      if (elSapaan) elSapaan.textContent = sapaan;
+      if (elNama) elNama.textContent = nama ? ` ${decodeURIComponent(nama)}` : '';
+
+      // Auto isi input RSVP
+      const namaInput = document.querySelector('#nama');
+      if (namaInput && nama) {
+         namaInput.value = decodeURIComponent(nama);
+      }
+   </script>
+
+
+   <!-- <script>
       const params = new URLSearchParams(window.location.search);
       const nama = decodeURIComponent(params.get('n') || '');
       const pronoun = decodeURIComponent(params.get('p') || 'Bapak/Ibu/Saudara/i ~ ');
@@ -615,7 +650,7 @@
       if (namaInput && nama) {
          namaInput.value = nama;
       }
-   </script>
+   </script> -->
 
    <script type="text/javascript">
       // Matikan Klik Kanan
