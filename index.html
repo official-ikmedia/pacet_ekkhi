@@ -499,22 +499,18 @@
    <script>
       const params = new URLSearchParams(window.location.search);
       const id = params.get("t");
+      const nama = params.get("n");
 
-      if (id) {
-         fetch("https://script.google.com/macros/s/AKfycbzLYYAx77RXEHws_s8WMuXrEj-9MitW7j0ox3dj-t0Vxw7Aj7oOxLFb3r72sVU_-N3uOg/exec?t=" + id)
-            .then(res => res.json())
-            .then(data => {
-               if (data.status === "ok") {
-                  document.querySelector(".nama-tamu").innerText = data.nama;
-               } else {
-                  document.querySelector(".nama-tamu").innerText = "Tamu Undangan";
-               }
-            })
-            .catch(() => {
-               document.querySelector(".nama-tamu").innerText = "Tamu Undangan";
-            });
+      // NAMA TAMPIL LANGSUNG (INSTANT)
+      if (nama) {
+         document.querySelector(".nama-tamu").innerText = decodeURIComponent(nama);
       } else {
          document.querySelector(".nama-tamu").innerText = "Tamu Undangan";
+      }
+
+      // TRACKING JALAN DI BACKGROUND
+      if (id) {
+         fetch("https://script.google.com/macros/s/AKfycbzLYYAx77RXEHws_s8WMuXrEj-9MitW7j0ox3dj-t0Vxw7Aj7oOxLFb3r72sVU_-N3uOg/exec?t=" + id);
       }
    </script>
 
