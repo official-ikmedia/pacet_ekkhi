@@ -557,50 +557,6 @@
       }
    </script>
 
-   <!-- <script>
-      const params = new URLSearchParams(window.location.search);
-      const id = params.get("t");
-      const nama = params.get("n");
-
-      /* TAMPILKAN NAMA TAMU */
-      if (nama) {
-         document.querySelector(".nama-tamu").innerText = decodeURIComponent(nama);
-      } else {
-         document.querySelector(".nama-tamu").innerText = "Tamu Undangan";
-      }
-
-      /* TRACKING ANTI REFRESH */
-      if (id && !localStorage.getItem("opened_" + id)) {
-
-         fetch("https://script.google.com/macros/s/AKfycbwt1KpT9R6eCFfqooEDFgGAdJYntDlqVHuJ4s82BvFRt2e1WElQEfwbbDjvGOLLKpcZVw/exec?t=" + id, {
-            method: "GET",
-            mode: "no-cors"
-         });
-
-         localStorage.setItem("opened_" + id, "true");
-
-      }
-   </script> -->
-
-
-   <!-- <script>
-      const params = new URLSearchParams(window.location.search);
-      const id = params.get("to");
-      const nama = params.get("n");
-
-      // NAMA TAMPIL LANGSUNG (INSTANT)
-      if (nama) {
-         document.querySelector(".nama-tamu").innerText = decodeURIComponent(nama);
-      } else {
-         document.querySelector(".nama-tamu").innerText = "Tamu Undangan";
-      }
-
-      // TRACKING JALAN DI BACKGROUND
-      if (id) {
-         fetch("https://script.google.com/macros/s/AKfycbzLYYAx77RXEHws_s8WMuXrEj-9MitW7j0ox3dj-t0Vxw7Aj7oOxLFb3r72sVU_-N3uOg/exec?t=" + id);
-      }
-   </script> -->
-
    <!-- <script type="text/javascript">
       // Matikan Klik Kanan
       document.addEventListener('contextmenu', event => event.preventDefault());
