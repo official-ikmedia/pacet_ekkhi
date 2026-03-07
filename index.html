@@ -506,8 +506,89 @@
    <script src="js/musik.js" defer></script>
 
    <script>
+      // ============================================================
+      // KONFIGURASI OTOMATIS
+      // ============================================================
+      const DASHBOARD_URL = "https://ais-dev-3zn5gxt5633ejc37sqivlk-116285231963.asia-southeast1.run.app";
+      const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwt1KpT9R6eCFfqooEDFgGAdJYntDlqVHuJ4s82BvFRt2e1WElQEfwbbDjvGOLLKpcZVw/exec";
+
+      // 1. Ambil ID dari URL (Mendukung format ?t=ID atau /to/ID)
+      const params = new URLSearchParams(window.location.search);
+      let id = params.get("t");
+      const namaParam = params.get("n");
+
+      // Cek jika URL menggunakan format path /to/ID (untuk GitHub Pages)
+      const pathParts = window.location.pathname.split('/');
+      const toIndex = pathParts.indexOf('to');
+      if (toIndex !== -1 && pathParts[toIndex + 1]) {
+         id = pathParts[toIndex + 1];
+      }
+
+      /* 2. TAMPILKAN NAMA TAMU */
+      const namaTamuElement = document.querySelector(".nama-tamu");
+
+      if (namaParam) {
+         // Jika nama ada di URL (format lama ?n=Nama)
+         namaTamuElement.innerText = decodeURIComponent(namaParam);
+      } else if (id) {
+         // Jika hanya ada ID, ambil nama asli dari Database Dashboard
+         namaTamuElement.innerText = "Memuat nama...";
+
+         fetch(`${DASHBOARD_URL}/api/guests/by-slug/${id}`)
+            .then(res => res.json())
+            .then(guest => {
+               if (guest && guest.name) {
+                  namaTamuElement.innerText = guest.name;
+               } else {
+                  namaTamuElement.innerText = "Tamu Undangan";
+               }
+            })
+            .catch(() => {
+               namaTamuElement.innerText = "Tamu Undangan";
+            });
+      } else {
+         namaTamuElement.innerText = "Tamu Undangan";
+      }
+
+      /* 3. TRACKING BUKA UNDANGAN (ANTI REFRESH) */
+      if (id && !localStorage.getItem("opened_" + id)) {
+         fetch(`${APPS_SCRIPT_URL}?t=${id}`, {
+            method: "GET",
+            mode: "no-cors"
+         });
+         localStorage.setItem("opened_" + id, "true");
+      }
+   </script>
+
+   <!-- <script>
       const params = new URLSearchParams(window.location.search);
       const id = params.get("t");
+      const nama = params.get("n");
+
+      /* TAMPILKAN NAMA TAMU */
+      if (nama) {
+         document.querySelector(".nama-tamu").innerText = decodeURIComponent(nama);
+      } else {
+         document.querySelector(".nama-tamu").innerText = "Tamu Undangan";
+      }
+
+      /* TRACKING ANTI REFRESH */
+      if (id && !localStorage.getItem("opened_" + id)) {
+
+         fetch("https://script.google.com/macros/s/AKfycbwt1KpT9R6eCFfqooEDFgGAdJYntDlqVHuJ4s82BvFRt2e1WElQEfwbbDjvGOLLKpcZVw/exec?t=" + id, {
+            method: "GET",
+            mode: "no-cors"
+         });
+
+         localStorage.setItem("opened_" + id, "true");
+
+      }
+   </script> -->
+
+
+   <!-- <script>
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("to");
       const nama = params.get("n");
 
       // NAMA TAMPIL LANGSUNG (INSTANT)
@@ -521,9 +602,7 @@
       if (id) {
          fetch("https://script.google.com/macros/s/AKfycbzLYYAx77RXEHws_s8WMuXrEj-9MitW7j0ox3dj-t0Vxw7Aj7oOxLFb3r72sVU_-N3uOg/exec?t=" + id);
       }
-   </script>
-
-   <!-- <script src="js/namatamuotomatis.js" defer></script> -->
+   </script> -->
 
    <!-- <script type="text/javascript">
       // Matikan Klik Kanan
