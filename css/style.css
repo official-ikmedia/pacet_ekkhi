@@ -47,12 +47,9 @@ body {
   color: var(--kuning);
 }
 .nama-tamu {
-  font-weight: 500;
-  font-size: 1.4rem;
-  color: var(--bg);
-}
-.label-undangan {
-  padding: 35px 40px 28px;
+  font-weight: 700;
+  font-size: 2rem;
+  font-family: "Charmonman";
 }
 .mynavbar {
   background-color: rgba(87, 0, 0, 0.274) !important;
@@ -510,11 +507,5 @@ footer li {
   }
   .turutmengundang h2 {
     font-size: 3.5rem;
-  }
-  .nama-tamu {
-    font-size: 1.2rem;
-  }
-  .label-undangan {
-    padding: 25px 30px 18px;
   }
 }
